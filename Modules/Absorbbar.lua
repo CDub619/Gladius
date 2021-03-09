@@ -217,6 +217,56 @@ function AbsorbBar:Update(unit)
 	if not self.frame[unit] then
 		self:CreateBar(unit)
 	end
+
+	local parent = Gladius:GetParent(unit, Gladius.db.absorbBarAttachTo)
+	local width = Gladius.db.healthBarAdjustWidth and Gladius.db.barWidth or Gladius.db.healthBarWidth
+	-- add width of the widget if attached to an widget
+	if Gladius.db.healthBarAttachTo ~= "Frame" and not strfind(Gladius.db.healthBarRelativePoint,"BOTTOM") and Gladius.db.healthBarAdjustWidth then
+		if not Gladius:GetModule(Gladius.db.healthBarAttachTo).frame[unit] then
+			Gladius:GetModule(Gladius.db.healthBarAttachTo):Update(unit)
+		end
+		width = width + Gladius:GetModule(Gladius.db.healthBarAttachTo).frame[unit]:GetWidth()
+	end
+	self.frame[unit]:ClearAllPoints()
+	self.frame[unit]:SetHeight(Gladius.db.healthBarHeight)
+	self.frame[unit]:SetWidth(width)
+	self.frame[unit]:SetPoint(Gladius.db.absorbBarAnchor, parent, Gladius.db.absorbBarRelativePoint, barOffsetX, 0)
+	self.frame[unit]:SetFrameStrata("MEDIUM")
+	self.frame[unit]:SetFrameLevel(parent:GetFrameLevel() + 2)
+	self.frame[unit].tileSize = 20;
+	self.frame[unit].overlay:ClearAllPoints()
+	self.frame[unit].overlay:SetHeight(Gladius.db.healthBarHeight)
+	self.frame[unit].overlay:SetWidth(width)
+	self.frame[unit].overlay:SetPoint(Gladius.db.absorbBarAnchor, self.frame[unit], Gladius.db.absorbBarRelativePoint, barOffsetX, 0)
+	self.frame[unit].overlay:SetStatusBarTexture("Interface\\RaidFrame\\Shield-Overlay", true, true);	--Tile both vertically and horizontally
+	self.frame[unit].overlay:SetAllPoints(self.frame[unit]);
+	self.frame[unit].overlay.tileSize = 20;
+	self.frame[unit].overlay:SetFrameStrata("MEDIUM")
+	self.frame[unit].overlay:SetFrameLevel(parent:GetFrameLevel() + 3)
+	self.frame[unit].overAbsorbGlow:ClearAllPoints()
+	self.frame[unit].overAbsorbGlow:SetTexture("Interface\\RaidFrame\\Shield-Overshield");
+	self.frame[unit].overAbsorbGlow:SetBlendMode("ADD");
+	self.frame[unit].overAbsorbGlow:SetPoint("BOTTOMLEFT", self.frame[unit].overlay, "BOTTOMRIGHT", -6, 0);
+	self.frame[unit].overAbsorbGlow:SetPoint("TOPLEFT", self.frame[unit].overlay, "TOPRIGHT", -6, 0);
+	self.frame[unit].overAbsorbGlow:SetWidth(11);
+	self.frame[unit].overAbsorbGlow:SetHeight(Gladius.db.healthBarHeight)
+
+	if Gladius.db.absorbBarBlizTexture then
+		self.frame[unit]:SetStatusBarTexture("Interface\\RaidFrame\\Shield-Fill")
+	else
+		self.frame[unit]:SetStatusBarTexture(LSM:Fetch(LSM.MediaType.STATUSBAR, Gladius.db.absorbBarTexture))
+		-- disable tileing
+		self.frame[unit]:GetStatusBarTexture():SetHorizTile(false)
+		self.frame[unit]:GetStatusBarTexture():SetVertTile(false)
+	end
+		self.frame[unit]:SetMinMaxValues(0, width)
+		self.frame[unit].overlay:SetMinMaxValues(0, width)
+		self.frame[unit]:SetValue(0)
+		self.frame[unit].overlay:SetValue(0)
+		self.frame[unit].overAbsorbGlow:Hide();
+		self.frame[unit]:SetAlpha(0)
+		self.frame[unit].overlay:SetAlpha(0)
+		self.frame[unit].overAbsorbGlow:SetAlpha(0)
 end
 
 function AbsorbBar:Show(unit)

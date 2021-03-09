@@ -263,10 +263,10 @@ function Gladius:OnInitialize()
 	self.testCount = 0
 	self.testing = setmetatable({
 		["arena1"] = {totalAbsorbs = 100000, health = 400000, maxHealth = 400000, power = 300000, maxPower = 300000, powerType = 0, unitClass = "MAGE", unitRace = "Draenei", unitSpec = "Frost", unitSpecId = 64}, ---chris
-		["arena2"] = {totalAbsorbs = 100000, health = 280000, maxHealth = 400000, power = 100, maxPower = 120, powerType = 2, unitClass = "HUNTER", unitRace = "Night Elf", unitSpec = "Survival", unitSpecId = 255}, ---chris
-		["arena3"] = {totalAbsorbs = 400000, health = 100000, maxHealth = 400000, power = 90, maxPower = 130, powerType = 3, unitClass = "ROGUE", unitRace = "Human", unitSpec = "Combat", unitSpecId = 260}, ---chris
+		["arena2"] = {totalAbsorbs = 100000, health = 400000, maxHealth = 400000, power = 100, maxPower = 120, powerType = 2, unitClass = "HUNTER", unitRace = "Night Elf", unitSpec = "Survival", unitSpecId = 255}, ---chris
+		["arena3"] = {totalAbsorbs = 100000, health = 400000, maxHealth = 400000, power = 90, maxPower = 130, powerType = 3, unitClass = "ROGUE", unitRace = "Human", unitSpec = "Combat", unitSpecId = 260}, ---chris
 		["arena4"] = {totalAbsorbs = 280000, health = 100000, maxHealth = 400000, power = 60, maxPower = 100, powerType = 6, unitClass = "DEATHKNIGHT", unitRace = "Dwarf", unitSpec = "Unholy", unitSpecId = 252}, ---chris
-		["arena5"] = {totalAbsorbs = nil, health = 100000, maxHealth = 400000, power = 30, maxPower = 100, powerType = 1, unitClass = "WARRIOR", unitRace = "Gnome", unitSpec = "Arms", unitSpecId = 71}, ---chris
+		["arena5"] = {totalAbsorbs = 500000, health = 100000, maxHealth = 400000, power = 30, maxPower = 100, powerType = 1, unitClass = "WARRIOR", unitRace = "Gnome", unitSpec = "Arms", unitSpecId = 71}, ---chris
 	},
 	{
 		__index = function(t, k)
