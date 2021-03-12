@@ -124,6 +124,7 @@ function DRTracker:UpdateIcon(unit, drCat)
 end
 
 function DRTracker:DRFaded(unit, spellID, force)
+
 	local drCat = DRData:GetSpellCategory(spellID)
 	if not force and Gladius.db.drCategories[drCat] == false then
 		return
@@ -154,6 +155,11 @@ function DRTracker:DRFaded(unit, spellID, force)
 	tracked.text:SetText(text)
 	tracked.text:SetTextColor(r,g,b)
 	tracked.texture:SetTexture(GetSpellTexture(spellID))
+
+	if spellID == 334693 then --Chris
+		tracked.texture:SetTexture(GetSpellTexture(295807)) --Chris
+	end
+
 	Gladius:Call(Gladius.modules.Timer, "SetTimer", tracked, tracked.timeLeft)
 	tracked:SetScript("OnUpdate", function(f, elapsed)
 		f.timeLeft = f.timeLeft - elapsed
@@ -298,9 +304,12 @@ function DRTracker:Reset(unit)
 end
 
 function DRTracker:Test(unit)
-	self:DRFaded(unit, 33786, true)
-	self:DRFaded(unit, 8122, true)
-	self:DRFaded(unit, 118, true)
+	self:DRFaded(unit, 33786, true) --Chris
+	self:DRFaded(unit, 15487, true) --Chris
+	self:DRFaded(unit, 339, true) --Chris
+	self:DRFaded(unit, 408, true) --Chris
+	self:DRFaded(unit, 8122, true) --Chris
+	self:DRFaded(unit, 118, true) --Chris
 end
 
 function DRTracker:GetOptions()

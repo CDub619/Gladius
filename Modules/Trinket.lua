@@ -210,9 +210,9 @@ function Trinket:GetTrinketCD(unit)
 end
 function Trinket:UpdateTrinket(unit, duration)
 	-- grid style icon
-	print("Gladius ", unit, " updated trinket texture: ", self.frame[unit].texture:GetTexture())
+	--print("Gladius ", unit, " updated trinket texture: ", self.frame[unit].texture:GetTexture())
 
-	if self.frame[unit].texture:GetTexture() == 1322720 or self.frame[unit].texture:GetTexture() == 895886 then
+	if self.frame[unit].texture:GetTexture() == 1322720 or self.frame[unit].texture:GetTexture() == 895886 then --Chris
 
 		if Gladius.db.trinketGridStyleIcon then
 			self.frame[unit].texture:SetVertexColor(Gladius.db.trinketGridStyleIconUsedColor.r, Gladius.db.trinketGridStyleIconUsedColor.g, Gladius.db.trinketGridStyleIconUsedColor.b, Gladius.db.trinketGridStyleIconUsedColor.a)

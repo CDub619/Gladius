@@ -263,10 +263,10 @@ function Gladius:OnInitialize()
 	self.testCount = 0
 	self.testing = setmetatable({
 		["arena1"] = {totalAbsorbs = 100000, health = 400000, maxHealth = 400000, power = 300000, maxPower = 300000, powerType = 0, unitClass = "MAGE", unitRace = "Draenei", unitSpec = "Frost", unitSpecId = 64}, ---chris
-		["arena2"] = {totalAbsorbs = 100000, health = 400000, maxHealth = 400000, power = 100, maxPower = 120, powerType = 2, unitClass = "HUNTER", unitRace = "Night Elf", unitSpec = "Survival", unitSpecId = 255}, ---chris
-		["arena3"] = {totalAbsorbs = 100000, health = 400000, maxHealth = 400000, power = 90, maxPower = 130, powerType = 3, unitClass = "ROGUE", unitRace = "Human", unitSpec = "Combat", unitSpecId = 260}, ---chris
+		["arena2"] = {totalAbsorbs = 100000, health = 350000, maxHealth = 400000, power = 100, maxPower = 120, powerType = 2, unitClass = "HUNTER", unitRace = "Night Elf", unitSpec = "Survival", unitSpecId = 255}, ---chris
+		["arena3"] = {totalAbsorbs = 50000, health = 290000, maxHealth = 400000, power = 90, maxPower = 130, powerType = 3, unitClass = "ROGUE", unitRace = "Human", unitSpec = "Combat", unitSpecId = 260}, ---chris
 		["arena4"] = {totalAbsorbs = 280000, health = 100000, maxHealth = 400000, power = 60, maxPower = 100, powerType = 6, unitClass = "DEATHKNIGHT", unitRace = "Dwarf", unitSpec = "Unholy", unitSpecId = 252}, ---chris
-		["arena5"] = {totalAbsorbs = 500000, health = 100000, maxHealth = 400000, power = 30, maxPower = 100, powerType = 1, unitClass = "WARRIOR", unitRace = "Gnome", unitSpec = "Arms", unitSpecId = 71}, ---chris
+		["arena5"] = {totalAbsorbs = 0, health = 100000, maxHealth = 400000, power = 30, maxPower = 100, powerType = 1, unitClass = "WARRIOR", unitRace = "Gnome", unitSpec = "Arms", unitSpecId = 71}, ---chris
 	},
 	{
 		__index = function(t, k)
@@ -765,24 +765,6 @@ function Gladius:UpdateAlpha(unit, alpha)
 	--alpha = alpha and alpha or 0.25
 	if self.buttons[unit] then
 		self.buttons[unit]:SetAlpha(alpha)
-		--[[if unit == "arena1" and GladiusAbsorbBararena1 then
-			GladiusAbsorbBararena1:SetAlpha(0)
-		end
-		if unit == "arena2" and GladiusAbsorbBararena2 then
-			GladiusAbsorbBararena1:SetAlpha(0)
-		end
-		if unit == "arena3" and GladiusAbsorbBararena3 then
-			GladiusAbsorbBararena1:SetAlpha(0)
-		end
-		if unit == "arena1" and GladiusAbsorbBararena1Overlay then
-			GladiusAbsorbBararena1Overlay:SetAlpha(0)
-		end
-		if unit == "arena2" and GladiusAbsorbBararena2Overlay then
-			GladiusAbsorbBararena1Overlay:SetAlpha(0)
-		end
-		if unit == "arena3" and GladiusAbsorbBararena3Overlay then
-			GladiusAbsorbBararena1Overlay:SetAlpha(0)
-		end]]
 	end
 end
 

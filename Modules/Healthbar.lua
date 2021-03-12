@@ -181,6 +181,7 @@ function HealthBar:Update(unit)
 		end
 		width = width + Gladius:GetModule(Gladius.db.healthBarAttachTo).frame[unit]:GetWidth()
 	end
+
 	self.frame[unit]:SetHeight(Gladius.db.healthBarHeight)
 	self.frame[unit]:SetWidth(width)
 	self.frame[unit]:SetPoint(Gladius.db.healthBarAnchor, parent, Gladius.db.healthBarRelativePoint, Gladius.db.healthBarOffsetX, Gladius.db.healthBarOffsetY)

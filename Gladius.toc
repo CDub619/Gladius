@@ -31,3 +31,4 @@ Modules\Layout.lua
 Modules\Dispel.lua
 Modules\Racial.lua
 Modules\AbsorbBar.lua
+Modules\Interrupt.lua
