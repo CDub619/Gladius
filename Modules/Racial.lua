@@ -187,7 +187,7 @@ function Racial:UNIT_AURA(event, unit)
 		if g then
 			local cd = self:GetRacialCD(unit)
 			if  (cd < 0) then
-			print("Blood Fury: "..cd.." durationUpdate: "..unitRaceCDs[race].cooldown)
+			--print("Blood Fury: "..cd.." durationUpdate: "..unitRaceCDs[race].cooldown)
 			self:UpdateRacial(unit, 120)
 			end
 		end
@@ -226,7 +226,7 @@ function Racial:UNIT_SPELLCAST_SUCCEEDED(event, unit, spellLineID, spell)
 		self:UpdateRacial(unit, unitRaceCDs[race].cooldown)
 	elseif race == "ORC" then
 		if spell == 33702 or spell == 20572 then
-			print("Blood Fury: "..spell.." durationUpdate: "..unitRaceCDs[race].cooldown)
+			--print("Blood Fury: "..spell.." durationUpdate: "..unitRaceCDs[race].cooldown)
 			self:UpdateRacial(unit, unitRaceCDs[race].cooldown)
 		end
 	end
